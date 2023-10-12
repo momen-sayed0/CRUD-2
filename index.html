@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Crud-2</title>
+     <!-- wow css -->
+     <link rel="stylesheet" href="./assets/vendors/wow/css/animate.css">
+     <!-- bootstrap v5.3 -->
+     <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.min.css">
+     <!-- fontAwesome -->
+     <link rel="stylesheet" href="./assets/vendors/fonts/all.min.css">
+     <!-- icon -->
+     <link rel="icon" href="./assets/img/p1.svg">
+     <!-- main css -->
+     <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+     <div class="text-center Spinner">
+          <div class="spinner-border" role="status">
+               <span class="visually-hidden">Loading...</span>
+          </div>
+     </div>
+
+     <div class="container py-4">
+          <div class="row addbuttn text-center mb-4">
+               <div class=" col-lg-12 text-center topOFpage">
+                    <h1> Products Management</h1>
+                    <hr>
+               </div>
+               <div class="col-lg-6 text-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                         <h4>Add New Product</h4>
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                         <div class="modal-dialog">
+                              <div class="modal-content">
+                                   <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Product Details</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                             aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body text-start">
+                                        <div class="form-group">
+                                             <div class="mb-3">
+                                                  <label for="Productname ">Product Name </label>
+                                                  <input type="text" id="Productname" class="form-control mt-1"
+                                                       placeholder="Product Name">
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label for="ProductPrice">Price </label>
+                                                  <input type="number" id="ProductPrice" class="form-control mt-1"
+                                                       placeholder="Price">
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label for="ProductDescription">Description </label>
+                                                  <input type="text" id="ProductDescription" class="form-control mt-1"
+                                                       placeholder="Description">
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label for="url" class="form-label"> Image URL </label>
+                                                  <input class="form-control mt-1" type="text" id="url"
+                                                       aria-describedby="imgHelp" placeholder="Product image URL">
+                                                  <div id="imgHelp" class="form-text">image size must be less than 2MB.
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                             data-bs-dismiss="modal">Cancel</button>
+                                        <button onclick="renderProduct()" type="button" class="btn btn-success test">Add
+                                             Product</button>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+          <!--  edit modal -->
+          <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                    <div class="modal-content">
+                         <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="editModalLabel">Product Details</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                   aria-label="Close"></button>
+                         </div>
+                         <div class="modal-body text-start">
+                              <div class="form-group">
+                                   <div class="mb-3">
+                                        <label for="Productname ">Product Name </label>
+                                        <input type="text" id="Productname" class="form-control mt-1"
+                                             placeholder="Product Name">
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="ProductPrice">Price </label>
+                                        <input type="number" id="ProductPrice" class="form-control mt-1"
+                                             placeholder="Price">
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="ProductDescription">Description </label>
+                                        <input type="text" id="ProductDescription" class="form-control mt-1"
+                                             placeholder="Description">
+                                   </div>
+                                   <div class="mb-3">
+                                        <label for="url" class="form-label"> Image URL </label>
+                                        <input class="form-control mt-1" type="text" id="url" aria-describedby="imgHelp"
+                                             placeholder="Product image URL">
+                                        <div id="imgHelp" class="form-text">image size must be less than 2MB.
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                              <button onclick="update()" data-bs-dismiss="modal" type="button"
+                                   class="btn btn-warning test">Update
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <!-- end edit modal -->
+
+          <div class="row py-4" id="Products">
+               <div class="col-lg-4 col-md-6 mb-3 ">
+                    <div class="card my-3">
+                         <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg" class="card-img-top">
+                         <div class="card-body">
+                              <h4 class="card-title">Professional Camera</h4>
+                              <p class="card-text">
+                                   <h5>Product Description :</h5>
+                                   Professional Fuji Camera
+                              </p>
+                              <p class="card-text">
+                                   <h5>Product Price :</h5> 5011 $
+                              </p>
+                              <button class="btn btn-primary"> Add to Cart</button>
+                              <!-- <a href="#" class="btn btn-primary">Add To Card</a> -->
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+
+
+          <div class="col-12 text-light">
+               <hr>
+               <h1 class="text-center ">Product Cart</h1>
+          </div>
+          <div class="row py-4 everv" id="checkout">
+               <div class="col-12 py-4">
+                    <div class="row row align-items-center">
+                         <div class="col-2 py-4">
+                              <img class="img-fluid rounded"
+                                   src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg" alt="">
+                         </div>
+                         <div class="col-6 ">
+                              <p class="my-2"> Title : Professional Camera </p>
+                              <p class="my-2"> Description : Professional Fuji Camera </p>
+                              <p class="my-2"> Price : 2002 $ </p>
+                         </div>
+                         <div class="col-2 pt-3 text-center">
+                              <button class="btn btnIncrease">
+                                   <i class="fa-solid fa-chevron-up"></i>
+                              </button>
+                              <p class="para">1</p>
+                              <button class="btn btnDecrease">
+                                   <i class="fa-solid fa-chevron-down"></i>
+                              </button>
+                         </div>
+                         <div class="col-2 pt-3 text-center">
+                              <button class="btn btn-danger"><i class="fa-solid fa-minus"></i> </button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <hr>
+          <div class="text-end px-5 total">
+               Total : 0 $
+          </div>
+     </div>
+
+
+
+     <!-- jQuery -->
+     <script src="./assets/vendors/jQuery/code.jquery.com_jquery-3.7.1.min.js"></script>
+     <!-- wow js -->
+     <script src="./assets/vendors/wow/js/wow.min.js"></script>
+     <!-- bootstrap js -->
+     <script src="./assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <!-- main js  -->
+     <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

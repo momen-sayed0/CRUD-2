@@ -1,0 +1,62 @@
+body {
+     background-color: rgba(35, 34, 34, 0.868);
+}
+
+.container {
+     background-color: rgba(0, 145, 255, 0.252);
+     border-radius: 8px;
+     display: none;
+}
+
+#checkout {
+     color: whitesmoke;
+}
+
+.Spinner {
+     position: absolute;
+     top: 38%;
+     left: 48%;
+     color: whitesmoke;
+     font-size: 100px;
+     /* display: none; */
+}
+
+hr {
+     color: white !important;
+}
+
+.topOFpage {
+     color: whitesmoke;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.btnDecrease,
+.btnIncrease {
+     background-color: rgba(71, 168, 242, 0.701) !important;
+}
+
+.addbuttn {
+     justify-content: center;
+}
+
+.form-group label:after {
+     content: '*';
+     color: red;
+     font-weight: bold;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+     appearance: none;
+}
+
+.text-center .para {
+     padding-top: 10px;
+     padding-bottom: 10px;
+     font-size: 20px !important;
+     margin-bottom: 0 !important;
+}
+
+.total {
+     font-weight: 400 !important;
+     color: white;
+}
